@@ -15,7 +15,11 @@ public class MainActivity extends AppCompatActivity {
 //        Log.d(getLocalClassName(), "message");
     }
 
-    public void clickMe(View view) {
+    public void gotoSharedPreferences(View view) {
         startActivity(new Intent(this, SharedPreferencesActivity.class));
+    }
+
+    public void gotoSavingFiles(View view) {
+        startActivity(new Intent(this, SavingFilesActivity.class));
     }
 }
