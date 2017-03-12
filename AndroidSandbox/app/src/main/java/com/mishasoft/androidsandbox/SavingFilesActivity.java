@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -39,18 +40,27 @@ public class SavingFilesActivity extends AppCompatActivity {
             outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
             outputStream.write(filetext.getBytes());
             outputStream.close();
+            File file = new File(getDirectory(), filename);
+            TextView textViewDump = (TextView) findViewById(R.id.textViewDump);
+            textViewDump.setText("created file: " + file.getAbsolutePath() + "\n");
         }
         catch (Exception e) {
             e.printStackTrace();
+            TextView textViewDump = (TextView) findViewById(R.id.textViewDump);
+            textViewDump.setText(e.getMessage());
         }
     }
 
     private void createFileInCacheDirectory(String filename) {
         try {
             File file = File.createTempFile(filename, null, getCacheDir());
+            TextView textViewDump = (TextView) findViewById(R.id.textViewDump);
+            textViewDump.setText("created file: " + file.getAbsolutePath() + "\n");
         }
         catch (Exception e) {
             e.printStackTrace();
+            TextView textViewDump = (TextView) findViewById(R.id.textViewDump);
+            textViewDump.setText(e.getMessage());
         }
 
     }
@@ -58,18 +68,19 @@ public class SavingFilesActivity extends AppCompatActivity {
     public void listFiles(View view) {
         File directory = getDirectory();
         File[] files = directory.listFiles();
-        Log.d(getLocalClassName(), "directory: " + directory.toString());
-        Log.d(getLocalClassName(), "files: " + files.length);
+        TextView textViewDump = (TextView) findViewById(R.id.textViewDump);
+        textViewDump.setText("");
+        textViewDump.append("directory: " + directory.toString() + "\n");
         for (File file : files) {
-            Log.d(getLocalClassName(), "file: " + file.getName());
+            textViewDump.append("file: " + file.getName() + "\n");
         }
     }
 
     public void deleteFile(View view) {
         File file = new File(getDirectory(), getFilename());
         Boolean deleted = file.delete();
-
-        Log.d(getLocalClassName(), "deleted: " + deleted);
+        TextView textViewDump = (TextView) findViewById(R.id.textViewDump);
+        textViewDump.setText("deleted: " + deleted);
     }
 
     private String getFilename() {
