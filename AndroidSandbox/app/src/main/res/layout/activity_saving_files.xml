@@ -14,10 +14,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/radioGroup2">
+        android:id="@+id/radioGroupDirectoryType">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/radioButtonInternalDirectory"
             android:layout_width="174dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -27,11 +27,11 @@
             android:text="Internal Directory"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/radioButton2"
+            app:layout_constraintRight_toLeftOf="@+id/radioButtonCacheDirectory"
             app:layout_constraintTop_toTopOf="parent" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/radioButtonCacheDirectory"
             android:layout_width="170dp"
             android:layout_height="33dp"
             android:layout_marginLeft="16dp"
@@ -52,10 +52,11 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="deleteFile"
         android:text="Delete File"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/radioGroup2"
+        app:layout_constraintRight_toLeftOf="@+id/radioGroupDirectoryType"
         app:layout_constraintTop_toBottomOf="@+id/button9" />
 
     <Button
@@ -65,22 +66,22 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="9dp"
+        android:onClick="listFiles"
         android:text="List Files"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/radioGroup2"
+        app:layout_constraintRight_toLeftOf="@+id/radioGroupDirectoryType"
         app:layout_constraintTop_toBottomOf="@+id/button7" />
 
     <Button
         android:id="@+id/button7"
         android:layout_width="160dp"
         android:layout_height="47dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="createFile"
         android:text="Create File"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/radioGroup2"
+        app:layout_constraintRight_toLeftOf="@+id/radioGroupDirectoryType"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -93,7 +94,7 @@
         tools:layout_editor_absoluteY="202dp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editTextFilename"
         android:layout_width="189dp"
         android:layout_height="41dp"
         android:layout_marginLeft="8dp"
@@ -105,5 +106,5 @@
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintLeft_toRightOf="@+id/button5"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupDirectoryType" />
 </android.support.constraint.ConstraintLayout>
