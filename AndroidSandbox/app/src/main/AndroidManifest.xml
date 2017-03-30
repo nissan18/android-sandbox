@@ -2,6 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mishasoft.androidsandbox">
 
+    <!--<uses-permission-->
+        <!--android:name="android.permission.ACCESS_WIFI_STATE"-->
+        <!--android:required="true" />-->
+    <!--<uses-permission-->
+        <!--android:name="android.permission.CHANGE_WIFI_STATE"-->
+        <!--android:required="true" />-->
+    <!--<uses-permission-->
+        <!--android:name="android.permission.INTERNET"-->
+        <!--android:required="true" />-->
+
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>\
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +30,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".SharedPreferencesActivity" />
-        <activity android:name=".SavingFilesActivity"></activity>
+        <activity android:name=".SavingFilesActivity" />
+        <activity android:name=".ConnectingToWifiActivity" />
+        <activity android:name=".BluetoothActivity"></activity>
     </application>
 
 </manifest>

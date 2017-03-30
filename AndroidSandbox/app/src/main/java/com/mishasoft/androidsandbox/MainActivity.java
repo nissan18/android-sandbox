@@ -22,4 +22,12 @@ public class MainActivity extends AppCompatActivity {
     public void gotoSavingFiles(View view) {
         startActivity(new Intent(this, SavingFilesActivity.class));
     }
+
+    public void gotoBluetooth(View view) {
+        startActivity(new Intent(this, BluetoothActivity.class));
+    }
+
+    public void gotoConnectingToWifi(View view) {
+        startActivity(new Intent(this, ConnectingToWifiActivity.class));
+    }
 }
