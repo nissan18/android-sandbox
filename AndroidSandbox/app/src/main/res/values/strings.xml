@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Android Sandbox</string>
+    <string-array name="main_menu">
+        <item>Shared Preferences</item>
+        <item>Saving Files</item>
+        <item>Bluetooth</item>
+    </string-array>
 </resources>
