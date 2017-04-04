@@ -11,6 +11,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.ToggleButton;
+
+import java.util.Set;
 
 //import java.io.File;
 
@@ -24,19 +27,24 @@ import android.widget.TextView;
 
         TextView textViewDump = (TextView) findViewById(R.id.textViewDump);
         textViewDump.append("onCreate\n");
-//        Log.d(getLocalClassName(), "onCreate");
+        Log.d(getLocalClassName(), "onCreate");
 
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
         registerReceiver(mReceiver, filter);
     }
 
+    public void clearDump(View view) {
+        TextView textViewDump = (TextView) findViewById(R.id.textViewDump);
+        textViewDump.setText("");
+    }
+
     public void checkStatus(View view) {
         TextView textViewDump = (TextView) findViewById(R.id.textViewDump);
-        textViewDump.setText("checkStatus\n");
+        textViewDump.append("checkStatus\n");
 
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
-            textViewDump.append("Devide does not support Bluetooth\n");
+            textViewDump.append("Device does not support Bluetooth\n");
         } else if (bluetoothAdapter.isEnabled()) {
             textViewDump.append("Bluetooth is enabled\n");
         } else {
@@ -45,19 +53,18 @@ import android.widget.TextView;
     }
 
     private static final int REQUEST_ENABLE_BLUETOOTH = 1;
-
     public void enableBluetooth(View view) {
         TextView textViewDump = (TextView) findViewById(R.id.textViewDump);
-        textViewDump.setText("enableBluetooth\n");
+        textViewDump.append("enableBluetooth\n");
 
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
-            textViewDump.append("Devide does not support Bluetooth\n");
+            textViewDump.append("Device does not support Bluetooth\n");
         } else if (bluetoothAdapter.isEnabled()) {
             textViewDump.append("Bluetooth is ALREADY enabled\n");
         } else {
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BLUETOOTH);
+            Intent enableBluetoothIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableBluetoothIntent , REQUEST_ENABLE_BLUETOOTH);
         }
     }
 
@@ -71,6 +78,40 @@ import android.widget.TextView;
                 textViewDump.append("Bluetooth WAS enabled\n");
             } else if (resultCode == RESULT_CANCELED) {
                 textViewDump.append("Bluetooth was NOT enabled\n");
+            }
+        }
+    }
+
+    public void disableBluetooth(View view) {
+        TextView textViewDump = (TextView) findViewById(R.id.textViewDump);
+        textViewDump.append("disableBluetooth\n");
+        textViewDump.append("Not implemented yet\n");
+
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (bluetoothAdapter == null) {
+            textViewDump.append("Device does not support Bluetooth\n");
+        } else if (!bluetoothAdapter.isEnabled()) {
+            textViewDump.append("Bluetooth is NOT enabled\n");
+        } else {
+            bluetoothAdapter.disable();
+        }
+    }
+
+    public void displayPairedDevices(View view) {
+        TextView textViewDump = (TextView) findViewById(R.id.textViewDump);
+        textViewDump.append("displayPairedDevices\n");
+
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (bluetoothAdapter == null) {
+            textViewDump.append("Device does not support Bluetooth\n");
+        } else if (!bluetoothAdapter.isEnabled()) {
+            textViewDump.append("Bluetooth is NOT enabled\n");
+        } else {
+            Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
+            textViewDump.append(String.format("There are %d paired devices.\n", pairedDevices.size()));
+            for (BluetoothDevice device : pairedDevices) {
+                textViewDump.append("Name: " + device.getName() + "\n");
+                textViewDump.append("Address: " + device.getAddress() + "\n\n"); // MAC address
             }
         }
     }

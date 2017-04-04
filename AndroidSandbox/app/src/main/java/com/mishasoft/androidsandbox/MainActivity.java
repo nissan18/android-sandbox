@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.d(getLocalClassName(), "started onCreate");
+//        Log.d(getLocalClassName(), "started onCreate");
 
         listViewMenu = (ListView) findViewById(R.id.listViewMenu);
         listViewMenu.setOnItemClickListener(this);

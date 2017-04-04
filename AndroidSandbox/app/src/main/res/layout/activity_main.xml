@@ -6,35 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.mishasoft.androidsandbox.MainActivity">
 
-    <!--<Button-->
-        <!--android:id="@+id/button2"-->
-        <!--android:layout_width="375dp"-->
-        <!--android:layout_height="54dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:onClick="gotoBluetooth"-->
-        <!--android:text="Bluetooth"-->
-        <!--app:layout_constraintLeft_toLeftOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/button8" />-->
-
-    <!--<Button-->
-        <!--android:id="@+id/button8"-->
-        <!--android:layout_width="375dp"-->
-        <!--android:layout_height="54dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:onClick="gotoSavingFiles"-->
-        <!--android:text="Saving Files"-->
-        <!--app:layout_constraintLeft_toLeftOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/button6" />-->
-
-    <!--<Button-->
-        <!--android:id="@+id/button6"-->
-        <!--android:layout_width="375dp"-->
-        <!--android:layout_height="54dp"-->
-        <!--android:onClick="gotoSharedPreferences"-->
-        <!--android:text="Shared Preferences"-->
-        <!--app:layout_constraintLeft_toLeftOf="parent"-->
-        <!--tools:layout_editor_absoluteY="10dp" />-->
-
     <ListView
         android:id="@+id/listViewMenu"
         android:layout_width="match_parent"
