@@ -19,6 +19,7 @@ import java.util.Set;
 
     public class BluetoothActivity extends AppCompatActivity {
     // https://developer.android.com/guide/topics/connectivity/bluetooth.html
+    // https://developer.android.com/samples/BluetoothChat/index.html
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +86,6 @@ import java.util.Set;
     public void disableBluetooth(View view) {
         TextView textViewDump = (TextView) findViewById(R.id.textViewDump);
         textViewDump.append("disableBluetooth\n");
-        textViewDump.append("Not implemented yet\n");
 
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
@@ -97,9 +97,9 @@ import java.util.Set;
         }
     }
 
-    public void displayPairedDevices(View view) {
+    public void startDiscovery(View view) {
         TextView textViewDump = (TextView) findViewById(R.id.textViewDump);
-        textViewDump.append("displayPairedDevices\n");
+        textViewDump.append("startDiscovery\n");
 
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
@@ -107,16 +107,25 @@ import java.util.Set;
         } else if (!bluetoothAdapter.isEnabled()) {
             textViewDump.append("Bluetooth is NOT enabled\n");
         } else {
-            Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
-            textViewDump.append(String.format("There are %d paired devices.\n", pairedDevices.size()));
-            for (BluetoothDevice device : pairedDevices) {
-                textViewDump.append("Name: " + device.getName() + "\n");
-                textViewDump.append("Address: " + device.getAddress() + "\n\n"); // MAC address
-            }
+            bluetoothAdapter.startDiscovery();
         }
     }
 
-    // Create a BroadcastReceiver for ACTION_FOUND.
+    public void cancelDiscovery(View view) {
+        TextView textViewDump = (TextView) findViewById(R.id.textViewDump);
+        textViewDump.append("cancelDiscovery\n");
+
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (bluetoothAdapter == null) {
+            textViewDump.append("Device does not support Bluetooth\n");
+        } else if (!bluetoothAdapter.isEnabled()) {
+            textViewDump.append("Bluetooth is NOT enabled\n");
+        } else {
+            bluetoothAdapter.cancelDiscovery();
+        }
+    }
+
+        // Create a BroadcastReceiver for ACTION_FOUND.
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             TextView textViewDump = (TextView) findViewById(R.id.textViewDump);
