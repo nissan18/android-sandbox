@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             startActivity(new Intent(this, SavingFilesActivity.class));
         } else if (selectedItem.equals("Bluetooth")) {
             startActivity(new Intent(this, BluetoothActivity.class));
+        } else if (selectedItem.equals("Wifi")) {
+            startActivity(new Intent(this, WifiActivity.class));
         }
     }
 }

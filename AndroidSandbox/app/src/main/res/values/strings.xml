@@ -4,5 +4,6 @@
         <item>Shared Preferences</item>
         <item>Saving Files</item>
         <item>Bluetooth</item>
+        <item>Wifi</item>
     </string-array>
 </resources>
